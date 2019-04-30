@@ -25,4 +25,5 @@ public interface BrandService {
      * @return
      */
     List<TbBrand> findAll();
+
 }

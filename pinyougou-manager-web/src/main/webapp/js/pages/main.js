@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
 
   'use strict';
 
@@ -10,15 +10,15 @@ $(function () {
     district: '思明区'
   });
 
-  $('#reset').click(function () {
+  $('#reset').click(function() {
     $distpicker.distpicker('reset');
   });
 
-  $('#reset-deep').click(function () {
+  $('#reset-deep').click(function() {
     $distpicker.distpicker('reset', true);
   });
 
-  $('#destroy').click(function () {
+  $('#destroy').click(function() {
     $distpicker.distpicker('destroy');
   });
 
