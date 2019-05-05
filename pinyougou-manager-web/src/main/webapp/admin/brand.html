@@ -22,7 +22,7 @@
 
   <script type="text/javascript">
     // 定义模块，引入 pagination 模块
-    let app = angular.module('pinyougou', [])
+    let app = angular.module('pinyougou', ['pagination'])
     // 定义控制器
     app.controller('brandController', function($scope, $http) {
       // 读取列表数据到表单中
@@ -31,12 +31,45 @@
           $scope.list = response
         })
       }
+
+      // 重新加载列表数据
+      $scope.reloadList = function() {
+        // 切换页码
+        $scope.findPage($scope.paginationConf.currentPage, $scope.paginationConf.itemsPerPage)
+      }
+
+      // 分页控件配置
+      $scope.paginationConf = {
+        // 当前页码
+        currentPage: 1,
+        // 总条数
+        totalItems: 10,
+        // 每页记录数
+        itemsPerPage: 10,
+        // 页码选项
+        perPageOptions: [10, 20, 30, 40, 50],
+        // 更改页面时触发事件
+        onChange: function() {
+          //重新加载
+          $scope.reloadList()
+        }
+      }
+      //分页
+      $scope.findPage = function(page, rows) {
+        $http.get('../brand/findPage.do?page=' + page + '&rows=' + rows).success(
+          function(response) {
+            $scope.list = response.rows
+            //更新总记录数
+            $scope.paginationConf.totalItems = response.total
+          }
+        )
+      }
     })
   </script>
 
 </head>
 
-<body class="hold-transition skin-red sidebar-mini" ng-app="pinyougou" ng-controller="brandController" ng-init="findAll()">
+<body class="hold-transition skin-red sidebar-mini" ng-app="pinyougou" ng-controller="brandController">
 
   <!-- .box-body -->
   <div class="box-header with-border">
@@ -93,6 +126,8 @@
         </tbody>
       </table>
       <!--数据列表/-->
+      <!-- 分页 -->
+      <tm-pagination conf="paginationConf"></tm-pagination>
 
     </div>
     <!-- 数据表格 /-->
