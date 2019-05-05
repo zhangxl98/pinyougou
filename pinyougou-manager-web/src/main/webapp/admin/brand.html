@@ -65,20 +65,44 @@
         )
       }
 
-      // 增加品牌
+      // 增加或修改品牌
       $scope.save = () => {
-        $http.post('../brand/add.do', $scope.entity).success(
+
+        // 判断是增加还是修改
+        let methodName = null
+        if ($scope.entity.id === null) {
+          // 增加品牌
+          methodName = "add"
+        } else {
+          // 修改品牌
+          methodName = "update"
+        }
+
+        $http.post('../brand/' + methodName + '.do', $scope.entity).success(
           (response) => {
             if (response.success) {
-              // 增加成功，显示分页列表
+              // 成功，显示分页列表
               $scope.reloadList()
             } else {
-              // 增加失败，弹出提示信息
+              // 失败，弹出提示信息
               alert(response.message)
             }
           }
         )
       }
+
+      // 根据 id 查询实体类
+      $scope.findOne = (id) => {
+        $http.get('../brand/findOne.do?id=' + id).success(
+          (response) => {
+            $scope.entity = response
+          }
+        )
+      }
+
+
+
+
     })
   </script>
 
@@ -135,7 +159,7 @@
             <td>{{ entity.name }}</td>
             <td>{{ entity.firstChar }}</td>
             <td class="text-center">
-              <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal">修改</button>
+              <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" data-target="#editModal" ng-click="findOne(entity.id)">修改</button>
             </td>
           </tr>
         </tbody>

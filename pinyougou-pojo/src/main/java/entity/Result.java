@@ -11,12 +11,12 @@ import java.io.Serializable;
  * @Device DELL-Inspiron-15-7559
  * @Modified By
  * @Version V1.0.0
- * @Description 增加品牌返回结果封装
+ * @Description 返回结果封装
  */
 public class Result implements Serializable {
 
     /**
-     * 是否添加成功
+     * 是否成功
      */
     private boolean success;
     

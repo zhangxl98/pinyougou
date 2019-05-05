@@ -69,10 +69,45 @@ public class BrandController {
         try {
             brandService.add(brand);
             // 增加成功
-            return new Result(true,"增加成功");
+            return new Result(true, "增加成功");
         } catch (Exception e) {
             e.printStackTrace();
-            return new Result(false,"增加失败");
+            // 增加失败
+            return new Result(false, "增加失败");
+        }
+    }
+
+    /**
+     * 根据 id 获取实体类
+     * <pre>createTime:
+     * 5/5/19 11:09 AM</pre>
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/findOne")
+    public TbBrand findOne(Long id) {
+        return brandService.findOne(id);
+    }
+
+    /**
+     * 修改品牌
+     * <pre>createTime:
+     * 5/5/19 11:20 AM</pre>
+     *
+     * @param brand
+     * @return
+     */
+    @RequestMapping("/update")
+    public Result update(@RequestBody TbBrand brand) {
+        try {
+            brandService.update(brand);
+            // 修改成功
+            return new Result(true, "修改成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 修改失败
+            return new Result(false, "修改失败");
         }
     }
 }

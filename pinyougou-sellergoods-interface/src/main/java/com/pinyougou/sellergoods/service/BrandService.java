@@ -46,4 +46,23 @@ public interface BrandService {
      * @param brand
      */
     void add(TbBrand brand);
+
+    /**
+     * 根据 id 获取单个实体类
+     * <pre>createTime:
+     * 5/5/19 11:06 AM</pre>
+     *
+     * @param id
+     * @return
+     */
+    TbBrand findOne(Long id);
+
+    /**
+     * 更新品牌
+     * <pre>createTime:
+     * 5/5/19 11:15 AM</pre>
+     *
+     * @param brand
+     */
+    void update(TbBrand brand);
 }
