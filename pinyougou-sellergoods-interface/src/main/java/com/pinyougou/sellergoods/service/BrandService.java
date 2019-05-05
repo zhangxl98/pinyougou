@@ -32,9 +32,18 @@ public interface BrandService {
      * <pre>createTime:
      * 4/30/19 11:29 AM</pre>
      *
-     * @param pageNum 页码
+     * @param pageNum  页码
      * @param pageSize 每页大小
      * @return
      */
     PageResult findPage(int pageNum, int pageSize);
+
+    /**
+     * 增加品牌
+     * <pre>createTime:
+     * 5/5/19 9:42 AM</pre>
+     *
+     * @param brand
+     */
+    void add(TbBrand brand);
 }
