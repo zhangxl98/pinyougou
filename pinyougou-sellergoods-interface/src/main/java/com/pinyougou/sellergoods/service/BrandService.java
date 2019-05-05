@@ -65,4 +65,13 @@ public interface BrandService {
      * @param brand
      */
     void update(TbBrand brand);
+
+    /**
+     * 批量删除品牌
+     * <pre>createTime:
+     * 5/5/19 12:33 PM</pre>
+     *
+     * @param ids
+     */
+    void delete(long[] ids);
 }

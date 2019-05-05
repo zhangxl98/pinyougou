@@ -70,7 +70,7 @@
 
         // 判断是增加还是修改
         let methodName = null
-        if ($scope.entity.id === null) {
+        if ($scope.entity.id == null) {
           // 增加品牌
           methodName = "add"
         } else {
@@ -100,7 +100,37 @@
         )
       }
 
+      // 删除品牌
 
+      // 定义要删除的品牌 id 数组
+      $scope.selectIds = []
+
+      // 获取要删除的 id
+      $scope.updateSelection = ($event, id) => {
+        // 判断选中状态
+        if ($event.target.checked) {
+          // 被选中 ==> 添加到数组
+          $scope.selectIds.push(id)
+        } else {
+          // 取消选中 ==> 获取 id 在数组中的位置 ==> 移除
+          $scope.selectIds.splice($scope.selectIds.indexOf(id), 1)
+        }
+      }
+
+      // 批量删除
+      $scope.delete = () => {
+        $http.get('../brand/delete.do?ids=' + $scope.selectIds).success(
+          (response) => {
+            if (response.success) {
+              // 成功，显示分页列表
+              $scope.reloadList()
+            } else {
+              // 失败，弹出提示信息
+              alert(response.message)
+            }
+          }
+        )
+      }
 
 
     })
@@ -126,7 +156,7 @@
           <div class="btn-group">
             <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ng-click="entity={}"><i class="fa fa-file-o"></i> 新建
             </button>
-            <button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button>
+            <button type="button" class="btn btn-default" title="删除" ng-click="delete()"><i class="fa fa-trash-o"></i> 删除</button>
             <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"></i> 刷新
             </button>
           </div>
@@ -154,7 +184,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="entity in list">
-            <td><input type="checkbox"></td>
+            <td><input type="checkbox" ng-click="updateSelection($event,entity.id)"></td>
             <td>{{ entity.id }}</td>
             <td>{{ entity.name }}</td>
             <td>{{ entity.firstChar }}</td>

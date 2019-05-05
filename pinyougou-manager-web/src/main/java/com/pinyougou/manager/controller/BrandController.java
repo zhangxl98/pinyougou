@@ -110,4 +110,25 @@ public class BrandController {
             return new Result(false, "修改失败");
         }
     }
+
+    /**
+     * 批量删除品牌
+     * <pre>createTime:
+     * 5/5/19 12:36 PM</pre>
+     *
+     * @param ids
+     * @return
+     */
+    @RequestMapping("/delete")
+    public Result delete(long[] ids) {
+        try {
+            brandService.delete(ids);
+            // 删除成功
+            return new Result(true, "删除成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 删除失败
+            return new Result(false, "删除失败");
+        }
+    }
 }
