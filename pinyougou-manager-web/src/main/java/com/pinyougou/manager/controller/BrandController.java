@@ -131,4 +131,19 @@ public class BrandController {
             return new Result(false, "删除失败");
         }
     }
+
+    /**
+     * 按条件搜索并分页
+     * <pre>createTime:
+     * 5/6/19 10:22 AM</pre>
+     *
+     * @param brand
+     * @param page
+     * @param rows
+     * @return
+     */
+    @RequestMapping("/search")
+    public PageResult search(@RequestBody TbBrand brand, int page, int rows) {
+        return brandService.findPage(brand, page, rows);
+    }
 }

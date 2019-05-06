@@ -39,6 +39,18 @@ public interface BrandService {
     PageResult findPage(int pageNum, int pageSize);
 
     /**
+     * 按条件返回分页列表
+     * <pre>createTime:
+     * 5/6/19 9:41 AM</pre>
+     *
+     * @param brand
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    PageResult findPage(TbBrand brand, int pageNum, int pageSize);
+
+    /**
      * 增加品牌
      * <pre>createTime:
      * 5/5/19 9:42 AM</pre>
