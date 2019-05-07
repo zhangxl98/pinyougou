@@ -3,6 +3,8 @@ package com.pinyougou.mapper;
 import com.pinyougou.pojo.TbSpecification;
 import com.pinyougou.pojo.TbSpecificationExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface TbSpecificationMapper {
@@ -27,4 +29,13 @@ public interface TbSpecificationMapper {
     int updateByPrimaryKeySelective(TbSpecification record);
 
     int updateByPrimaryKey(TbSpecification record);
+
+    /**
+     * 规格列表数据
+     * <pre>createTime:
+     * 5/7/19 8:59 PM</pre>
+     *
+     * @return
+     */
+    List<Map> selectOptionList();
 }

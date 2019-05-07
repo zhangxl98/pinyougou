@@ -5,6 +5,7 @@ import com.pinyougou.pojogroup.Specification;
 import entity.PageResult;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -75,4 +76,13 @@ public interface SpecificationService {
      * @param ids
      */
     void delete(Long[] ids);
+
+    /**
+     * 规格下拉列表数据
+     * <pre>createTime:
+     * 5/7/19 9:01 PM</pre>
+     *
+     * @return
+     */
+    List<Map> selectOptionList();
 }

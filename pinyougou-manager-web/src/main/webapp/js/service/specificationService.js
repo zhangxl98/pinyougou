@@ -29,4 +29,9 @@ app.service('specificationService', function($http) {
   this.delete = (ids) => {
     return $http.get('../specification/delete.do?ids=' + ids)
   }
+
+  // 规格下拉数据
+  this.selectOptionList = () => {
+    return $http.get('../specification/selectOptionList.do')
+  }
 })

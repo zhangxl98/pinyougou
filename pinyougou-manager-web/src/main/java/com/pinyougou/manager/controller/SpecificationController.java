@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -123,5 +124,17 @@ public class SpecificationController {
             e.printStackTrace();
             return new Result(false, "删除失败");
         }
+    }
+
+    /**
+     * 规格下拉数据
+     * <pre>createTime:
+     * 5/7/19 9:02 PM</pre>
+     *
+     * @return
+     */
+    @RequestMapping("/selectOptionList")
+    public List<Map> selectOptionList() {
+        return specificationService.selectOptionList();
     }
 }

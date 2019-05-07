@@ -14,6 +14,7 @@ import entity.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -123,5 +124,10 @@ public class SpecificationServiceImpl implements SpecificationService {
             specificationOptionMapper.deleteByExample(example);
 
         }
+    }
+
+    @Override
+    public List<Map> selectOptionList() {
+        return specificationMapper.selectOptionList();
     }
 }
