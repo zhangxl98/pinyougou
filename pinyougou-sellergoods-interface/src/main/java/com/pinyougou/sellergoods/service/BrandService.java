@@ -4,6 +4,7 @@ import com.pinyougou.pojo.TbBrand;
 import entity.PageResult;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -86,4 +87,13 @@ public interface BrandService {
      * @param ids
      */
     void delete(long[] ids);
+
+    /**
+     * 品牌下拉框数据
+     * <pre>createTime:
+     * 5/7/19 8:18 PM</pre>
+     *
+     * @return
+     */
+    List<Map> selectOptionList();
 }

@@ -1,5 +1,5 @@
 // 控制层
-app.controller('typeTemplateController', function($scope, $controller, typeTemplateService) {
+app.controller('typeTemplateController', function($scope, $controller, typeTemplateService,brandService) {
 
   // 继承
   $controller('baseController', {
@@ -25,5 +25,19 @@ app.controller('typeTemplateController', function($scope, $controller, typeTempl
       }
     )
   }
+
+	// 定义品牌列表
+  $scope.brandList={
+  	data:[]
+  }
+
+	// 获取品牌数据
+	$scope.findBrandList = () => {
+		brandService.selectOptionList().success(
+			(response) => {
+				$scope.brandList = {data: response}
+			}
+		)
+	}
 
 })

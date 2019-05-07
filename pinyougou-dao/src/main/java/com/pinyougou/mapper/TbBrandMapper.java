@@ -2,7 +2,10 @@ package com.pinyougou.mapper;
 
 import com.pinyougou.pojo.TbBrand;
 import com.pinyougou.pojo.TbBrandExample;
+
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface TbBrandMapper {
@@ -27,4 +30,13 @@ public interface TbBrandMapper {
     int updateByPrimaryKeySelective(TbBrand record);
 
     int updateByPrimaryKey(TbBrand record);
+
+    /**
+     * 品牌下拉框数据
+     * <pre>createTime:
+     * 5/7/19 8:13 PM</pre>
+     *
+     * @return
+     */
+    List<Map> selectOptionList();
 }

@@ -35,5 +35,9 @@ app.service('brandService', function($http) {
     return $http.post('../brand/search.do?page=' + page + "&rows=" + rows, searchEntity)
   }
 
+  // 品牌下拉数据
+  this.selectOptionList = () => {
+    return $http.get('../brand/selectOptionList.do')
+  }
 
 })
