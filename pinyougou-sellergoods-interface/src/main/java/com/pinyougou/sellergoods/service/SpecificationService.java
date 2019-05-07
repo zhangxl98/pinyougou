@@ -66,4 +66,13 @@ public interface SpecificationService {
      * @return
      */
     Specification findOne(Long id);
+
+    /**
+     * 批量删除
+     * <pre>createTime:
+     * 5/7/19 5:34 PM</pre>
+     *
+     * @param ids
+     */
+    void delete(Long[] ids);
 }

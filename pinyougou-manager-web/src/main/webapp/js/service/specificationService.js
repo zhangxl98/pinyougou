@@ -24,4 +24,9 @@ app.service('specificationService', function($http) {
   this.findOne = (id) => {
     return $http.get('../specification/findOne.do?id=' + id)
   }
+
+  // 批量删除
+  this.delete = (ids) => {
+    return $http.get('../specification/delete.do?ids=' + ids)
+  }
 })

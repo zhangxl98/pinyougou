@@ -49,10 +49,27 @@
      )
    }
 
+   // 根据 id 查询实体类
    $scope.findOne = (id) => {
      specificationService.findOne(id).success(
        (response) => {
          $scope.entity = response
+       }
+     )
+   }
+
+   // 批量删除
+   $scope.delete = () => {
+     specificationService.delete($scope.selectIds).success(
+       (response) => {
+         if (response.success) {
+           // 成功，显示分页列表
+           $scope.reloadList()
+         } else {
+           // 失败，弹出提示信息
+           alert(response.message)
+         }
+         $scope.selectIds = []
        }
      )
    }

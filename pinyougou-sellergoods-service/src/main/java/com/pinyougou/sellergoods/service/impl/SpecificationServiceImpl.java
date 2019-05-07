@@ -108,4 +108,20 @@ public class SpecificationServiceImpl implements SpecificationService {
 
         return specification;
     }
+
+    @Override
+    public void delete(Long[] ids) {
+        for (Long id : ids) {
+
+            // 删除规格实体
+            specificationMapper.deleteByPrimaryKey(id);
+
+            // 删除对应的规格选项
+            TbSpecificationOptionExample example = new TbSpecificationOptionExample();
+            TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
+            criteria.andSpecIdEqualTo(id);
+            specificationOptionMapper.deleteByExample(example);
+
+        }
+    }
 }
