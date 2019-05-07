@@ -47,4 +47,11 @@ public interface SpecificationService {
      * @param specification
      */
     void add(Specification specification);
+
+    /**
+     * 根据 id 获取规格详情
+     * @param id
+     * @return
+     */
+    Specification findOne(Long id);
 }

@@ -59,8 +59,16 @@ public class SpecificationController {
         return specificationService.findPage(page, rows);
     }
 
+    /**
+     * 增加规格
+     * <pre>createTime:
+     * 5/7/19 4:43 PM</pre>
+     *
+     * @param specification
+     * @return
+     */
     @RequestMapping("/add")
-    public Result add(@RequestBody Specification specification){
+    public Result add(@RequestBody Specification specification) {
         try {
             specificationService.add(specification);
             return new Result(true, "增加成功");
@@ -68,5 +76,10 @@ public class SpecificationController {
             e.printStackTrace();
             return new Result(false, "增加失败");
         }
+    }
+    
+    @RequestMapping("/findOne")
+    public Specification findOne(Long id) {
+        return specificationService.findOne(id);
     }
 }

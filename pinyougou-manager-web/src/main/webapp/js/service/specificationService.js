@@ -12,7 +12,11 @@ app.service('specificationService', function($http) {
 
   // 增加
   this.add = (entity) => {
-    console.log(entity)
     return $http.post('../specification/add.do', entity)
+  }
+
+  // 根据 id 查询实体类
+  this.findOne = (id) => {
+    return $http.get('../specification/findOne.do?id=' + id)
   }
 })

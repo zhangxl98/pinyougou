@@ -7,6 +7,7 @@ import com.pinyougou.mapper.TbSpecificationMapper;
 import com.pinyougou.mapper.TbSpecificationOptionMapper;
 import com.pinyougou.pojo.TbSpecification;
 import com.pinyougou.pojo.TbSpecificationOption;
+import com.pinyougou.pojo.TbSpecificationOptionExample;
 import com.pinyougou.pojogroup.Specification;
 import com.pinyougou.sellergoods.service.SpecificationService;
 import entity.PageResult;
@@ -59,5 +60,30 @@ public class SpecificationServiceImpl implements SpecificationService {
             // 新增规格
             specificationOptionMapper.insert(option);
         }
+    }
+
+    @Override
+    public Specification findOne(Long id) {
+
+        // 定义需要返回的规格组合实体
+        Specification specification = new Specification();
+
+        // 获取规格实体
+        TbSpecification tbSpecification = specificationMapper.selectByPrimaryKey(id);
+
+        // 获取规格选项
+        TbSpecificationOptionExample tbSpecificationOptionExample = new TbSpecificationOptionExample();
+        TbSpecificationOptionExample.Criteria criteria = tbSpecificationOptionExample.createCriteria();
+
+        // 根据规格 id 查询规格选项
+        criteria.andSpecIdEqualTo(id);
+
+        List<TbSpecificationOption> tbSpecificationOptions = specificationOptionMapper.selectByExample(tbSpecificationOptionExample);
+
+        // 封装组合实体
+        specification.setSpecification(tbSpecification);
+        specification.setSpecificationOptionList(tbSpecificationOptions);
+
+        return specification;
     }
 }

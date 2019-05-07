@@ -26,6 +26,7 @@
      )
    }
 
+   // 保存规格
    $scope.save = () => {
      specificationService.add($scope.entity).success(
        (response) => {
@@ -35,6 +36,14 @@
          } else {
            alert(response.message)
          }
+       }
+     )
+   }
+
+   $scope.findOne = (id) => {
+     specificationService.findOne(id).success(
+       (response) => {
+         $scope.entity = response
        }
      )
    }
