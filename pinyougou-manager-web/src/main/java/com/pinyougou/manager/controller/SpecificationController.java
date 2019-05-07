@@ -30,8 +30,6 @@ public class SpecificationController {
 
     @Reference
     private SpecificationService specificationService;
-//    @Reference
-//    private TbSpecificationOption specificationOption;
 
     /**
      * 返回全部列表
@@ -77,7 +75,34 @@ public class SpecificationController {
             return new Result(false, "增加失败");
         }
     }
-    
+
+    /**
+     * 修改规格
+     * <pre>createTime:
+     * 5/7/19 5:18 PM</pre>
+     *
+     * @param specification
+     * @return
+     */
+    @RequestMapping("/update")
+    public Result update(@RequestBody Specification specification) {
+        try {
+            specificationService.update(specification);
+            return new Result(true, "修改成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "修改失败");
+        }
+    }
+
+    /**
+     * 根据 id 获取规格详情
+     * <pre>createTime:
+     * 5/7/19 5:10 PM</pre>
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping("/findOne")
     public Specification findOne(Long id) {
         return specificationService.findOne(id);

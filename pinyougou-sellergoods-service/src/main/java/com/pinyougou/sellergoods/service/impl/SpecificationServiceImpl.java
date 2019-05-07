@@ -63,6 +63,28 @@ public class SpecificationServiceImpl implements SpecificationService {
     }
 
     @Override
+    public void update(Specification specification) {
+        // 获取规格实体
+        TbSpecification tbspecification = specification.getSpecification();
+        specificationMapper.updateByPrimaryKey(tbspecification);
+
+        // 删除原来的规格选项
+        TbSpecificationOptionExample example = new TbSpecificationOptionExample();
+        TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
+        criteria.andSpecIdEqualTo(tbspecification.getId());
+        specificationOptionMapper.deleteByExample(example);
+
+        // 获取规格选项集合
+        List<TbSpecificationOption> specificationOptionList = specification.getSpecificationOptionList();
+        for (TbSpecificationOption option : specificationOptionList) {
+            // 设置规格 ID
+            option.setSpecId(tbspecification.getId());
+            // 新增规格
+            specificationOptionMapper.insert(option);
+        }
+    }
+
+    @Override
     public Specification findOne(Long id) {
 
         // 定义需要返回的规格组合实体

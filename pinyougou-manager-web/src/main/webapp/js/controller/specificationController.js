@@ -28,7 +28,16 @@
 
    // 保存规格
    $scope.save = () => {
-     specificationService.add($scope.entity).success(
+     // 服务层对象
+     let serviceObject = null
+     if ($scope.entity.specification.id != null) {
+       // 如果有 ID ==> 修改
+       serviceObject = specificationService.update($scope.entity)
+     } else {
+       // 如果没有 ID ==> 增加
+       serviceObject = specificationService.add($scope.entity)
+     }
+     serviceObject.success(
        (response) => {
          if (response.success) {
            //重新查询

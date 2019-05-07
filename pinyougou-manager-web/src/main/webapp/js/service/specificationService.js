@@ -15,6 +15,11 @@ app.service('specificationService', function($http) {
     return $http.post('../specification/add.do', entity)
   }
 
+  // 修改
+  this.update = (entity) => {
+    return $http.post('../specification/update.do', entity)
+  }
+
   // 根据 id 查询实体类
   this.findOne = (id) => {
     return $http.get('../specification/findOne.do?id=' + id)

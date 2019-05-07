@@ -49,7 +49,19 @@ public interface SpecificationService {
     void add(Specification specification);
 
     /**
+     * 修改规格
+     * <pre>createTime:
+     * 5/7/19 5:10 PM</pre>
+     *
+     * @param specification
+     */
+    void update(Specification specification);
+
+    /**
      * 根据 id 获取规格详情
+     * <pre>createTime:
+     * 5/7/19 5:10 PM</pre>
+     *
      * @param id
      * @return
      */
