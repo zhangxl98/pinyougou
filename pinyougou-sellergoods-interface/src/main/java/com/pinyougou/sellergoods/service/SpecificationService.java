@@ -1,6 +1,7 @@
 package com.pinyougou.sellergoods.service;
 
 import com.pinyougou.pojo.TbSpecification;
+import com.pinyougou.pojogroup.Specification;
 import entity.PageResult;
 
 import java.util.List;
@@ -37,4 +38,13 @@ public interface SpecificationService {
      * @return
      */
     PageResult findPage(int pageNum, int pageSize);
+
+    /**
+     * 增加规格
+     * <pre>createTime:
+     * 5/7/19 1:47 PM</pre>
+     *
+     * @param specification
+     */
+    void add(Specification specification);
 }

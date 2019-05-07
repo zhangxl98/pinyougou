@@ -90,9 +90,4 @@ app.controller('brandController', function($scope, $controller, brandService) {
       }
     )
   }
-  // 刷新列表
-  $scope.reloadList = () => {
-    $scope.search($scope.paginationConf.currentPage, $scope.paginationConf.itemsPerPage)
-  }
-
 })

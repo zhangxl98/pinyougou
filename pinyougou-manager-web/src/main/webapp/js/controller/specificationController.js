@@ -25,4 +25,29 @@
        }
      )
    }
+
+   $scope.save = () => {
+     specificationService.add($scope.entity).success(
+       (response) => {
+         if (response.success) {
+           //重新查询
+           $scope.reloadList()
+         } else {
+           alert(response.message)
+         }
+       }
+     )
+   }
+
+
+   // 增加规格选项行
+   $scope.addTableRow = () => {
+     $scope.entity.specificationOptionList.push({})
+   }
+
+   //删除规格选项行
+   $scope.deleTableRow = function(index) {
+     $scope.entity.specificationOptionList.splice(index, 1)
+   }
+
  })
