@@ -97,7 +97,6 @@ public class TypeTemplateController {
         }
     }
 
-
     /**
      * 根据 id 获取实体
      * <pre>createTime:
@@ -109,5 +108,26 @@ public class TypeTemplateController {
     @RequestMapping("/findOne")
     public TbTypeTemplate findOne(Long id) {
         return typeTemplateService.findOne(id);
+    }
+
+    /**
+     * 批量删除
+     * <pre>createTime:
+     * 5/8/19 10:15 AM</pre>
+     *
+     * @param ids
+     * @return
+     */
+    @RequestMapping("/delete")
+    public Result delete(Long[] ids) {
+        try {
+            typeTemplateService.delete(ids);
+            // 删除成功
+            return new Result(true, "删除成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 删除失败
+            return new Result(false, "删除失败");
+        }
     }
 }

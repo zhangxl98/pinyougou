@@ -65,4 +65,13 @@ public interface TypeTemplateService {
      * @return
      */
     TbTypeTemplate findOne(Long id);
+
+    /**
+     * 批量删除
+     * <pre>createTime:
+     * 5/8/19 10:12 AM</pre>
+     *
+     * @param ids
+     */
+    void delete(Long[] ids);
 }

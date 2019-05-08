@@ -99,6 +99,21 @@ app.controller('typeTemplateController', function($scope, $controller, typeTempl
     )
   }
 
+  // 批量删除
+  $scope.delete = () => {
+    typeTemplateService.delete($scope.selectIds).success(
+      (response) => {
+        if (response.success) {
+          //重新查询
+          $scope.reloadList()
+        } else {
+          alert(response.message)
+        }
+        $scope.selectIds = []
+      }
+    )
+  }
+
   // 增加扩展属性行
   $scope.addTableRow = () => {
     $scope.entity.customAttributeItems.push({})

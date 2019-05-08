@@ -54,4 +54,11 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
     public TbTypeTemplate findOne(Long id) {
         return tbTypeTemplateMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public void delete(Long[] ids) {
+        for (Long id : ids) {
+            tbTypeTemplateMapper.deleteByPrimaryKey(id);
+        }
+    }
 }

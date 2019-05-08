@@ -24,4 +24,9 @@ app.service('typeTemplateService', function($http) {
   this.findOne = (id) => {
     return $http.get('../typeTemplate/findOne.do?id=' + id)
   }
+
+  // 批量删除
+  this.delete = (ids) => {
+    return $http.get('../typeTemplate/delete.do?ids=' + ids)
+  }
 })
