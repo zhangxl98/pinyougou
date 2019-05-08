@@ -81,7 +81,7 @@
    }
 
    //删除规格选项行
-   $scope.deleTableRow = function(index) {
+   $scope.deleTableRow = (index) => {
      $scope.entity.specificationOptionList.splice(index, 1)
    }
 

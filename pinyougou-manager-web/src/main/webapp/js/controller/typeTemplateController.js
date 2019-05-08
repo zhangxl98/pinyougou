@@ -58,4 +58,14 @@ app.controller('typeTemplateController', function($scope, $controller, typeTempl
     )
   }
 
+
+  // 增加扩展属性行
+  $scope.addTableRow = () => {
+    $scope.entity.customAttributeItems.push({})
+  }
+
+  // 删除扩展属性行
+  $scope.deleTableRow = (index) => {
+    $scope.entity.customAttributeItems.splice(index, 1)
+  }
 })
