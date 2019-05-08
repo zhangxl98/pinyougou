@@ -37,4 +37,32 @@ public interface TypeTemplateService {
      * @return
      */
     PageResult findPage(int pageNum, int pageSize);
+
+    /**
+     * 增加模板
+     * <pre>createTime:
+     * 5/8/19 9:49 AM</pre>
+     *
+     * @param tbTypeTemplate
+     */
+    void add(TbTypeTemplate tbTypeTemplate);
+
+    /**
+     * 修改模板
+     * <pre>createTime:
+     * 5/8/19 9:50 AM</pre>
+     *
+     * @param tbTypeTemplate
+     */
+    void update(TbTypeTemplate tbTypeTemplate);
+
+    /**
+     * 根据 id 获取实体
+     * <pre>createTime:
+     * 5/8/19 9:24 AM</pre>
+     *
+     * @param id
+     * @return
+     */
+    TbTypeTemplate findOne(Long id);
 }

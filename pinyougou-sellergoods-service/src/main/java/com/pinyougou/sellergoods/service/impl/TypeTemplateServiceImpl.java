@@ -39,4 +39,19 @@ public class TypeTemplateServiceImpl implements TypeTemplateService {
         Page<TbTypeTemplate> page = (Page<TbTypeTemplate>) tbTypeTemplateMapper.selectByExample(null);
         return new PageResult(page.getTotal(), page.getResult());
     }
+
+    @Override
+    public void add(TbTypeTemplate tbTypeTemplate) {
+        tbTypeTemplateMapper.insert(tbTypeTemplate);
+    }
+
+    @Override
+    public void update(TbTypeTemplate tbTypeTemplate) {
+        tbTypeTemplateMapper.updateByPrimaryKey(tbTypeTemplate);
+    }
+
+    @Override
+    public TbTypeTemplate findOne(Long id) {
+        return tbTypeTemplateMapper.selectByPrimaryKey(id);
+    }
 }
