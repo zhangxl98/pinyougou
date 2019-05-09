@@ -21,7 +21,14 @@ import java.util.Map;
 @RestController
 @RequestMapping("/login")
 public class LoginController {
-    
+
+    /**
+     * 获取当前登录的用户名
+     * <pre>createTime:
+     * 5/9/19 11:32 AM</pre>
+     *
+     * @return
+     */
     @RequestMapping("/getName")
     public Map name() {
         Map map = new HashMap<>(16);
@@ -29,7 +36,7 @@ public class LoginController {
         // 获取当前登录的用户名
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        map.put("loginName",name);
+        map.put("loginName", name);
 
         return map;
     }
