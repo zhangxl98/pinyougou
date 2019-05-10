@@ -34,8 +34,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        System.out.println("UserDetailsServiceImpl 的 loadUserByUsername() 被调用......");
-
         // 构建角色列表
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_SELLER"));
@@ -45,7 +43,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         if (null != seller && seller.getStatus().equals("1")) {
             // 商家已审核
-            return new User(seller.getName(), seller.getPassword(), grantedAuthorities);
+            return new User(username, seller.getPassword(), grantedAuthorities);
         } else {
             return null;
         }
