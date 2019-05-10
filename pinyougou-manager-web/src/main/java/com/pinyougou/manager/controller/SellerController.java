@@ -55,4 +55,17 @@ public class SellerController {
     public PageResult findPage(int page, int rows) {
         return sellerService.findPage(page, rows);
     }
+
+    /**
+     * 根据 id 获取实体
+     * <pre>createTime:
+     * 5/10/19 3:17 PM</pre>
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/findOne")
+    public TbSeller findOne(String id) {
+        return sellerService.findOne(id);
+    }
 }

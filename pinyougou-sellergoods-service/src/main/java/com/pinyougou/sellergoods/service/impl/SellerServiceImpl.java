@@ -50,4 +50,9 @@ public class SellerServiceImpl implements SellerService {
 
         sellerMapper.insert(seller);
     }
+
+    @Override
+    public TbSeller findOne(String id) {
+        return sellerMapper.selectByPrimaryKey(id);
+    }
 }

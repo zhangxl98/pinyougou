@@ -26,4 +26,13 @@
      )
    }
 
+   // 根据 id 查询实体类
+   $scope.findOne = (id) => {
+     sellerService.findOne(id).success(
+       (response) => {
+         $scope.entity = response
+       }
+     )
+   }
+
  })

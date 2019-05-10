@@ -46,4 +46,14 @@ public interface SellerService {
      * @param seller
      */
     void add(TbSeller seller);
+
+    /**
+     * 根据 id 获取实体
+     * <pre>createTime:
+     * 5/10/19 3:12 PM</pre>
+     *
+     * @param id
+     * @return
+     */
+    TbSeller findOne(String id);
 }

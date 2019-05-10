@@ -10,4 +10,9 @@ app.service('sellerService', function($http) {
   this.findPage = (page, rows) => {
     return $http.get('../seller/findPage.do?page=' + page + '&rows=' + rows)
   }
+
+  // 根据 id 查询实体类
+  this.findOne = (id) => {
+    return $http.get('../seller/findOne.do?id=' + id)
+  }
 })
