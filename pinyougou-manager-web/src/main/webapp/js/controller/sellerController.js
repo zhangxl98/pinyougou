@@ -35,4 +35,19 @@
      )
    }
 
+   // 更改审核状态
+   $scope.updateStatus = (sellerId, status) => {
+     sellerService.updateStatus(sellerId, status).success(
+       (response) => {
+         if (response.success) {
+           // 成功，显示分页列表
+           $scope.reloadList()
+         } else {
+           // 失败，弹出提示信息
+           alert(response.message)
+         }
+       }
+     )
+   }
+
  })

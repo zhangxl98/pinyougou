@@ -15,4 +15,9 @@ app.service('sellerService', function($http) {
   this.findOne = (id) => {
     return $http.get('../seller/findOne.do?id=' + id)
   }
+
+  // 更改审核状态
+  this.updateStatus = (sellerId, status) => {
+    return $http.get('../seller/updateStatus.do?sellerId=' + sellerId + '&status=' + status)
+  }
 })

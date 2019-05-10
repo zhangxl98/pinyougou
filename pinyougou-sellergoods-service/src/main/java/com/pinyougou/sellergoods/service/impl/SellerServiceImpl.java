@@ -55,4 +55,11 @@ public class SellerServiceImpl implements SellerService {
     public TbSeller findOne(String id) {
         return sellerMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public void updateStatus(String sellerId, String status) {
+        TbSeller seller = sellerMapper.selectByPrimaryKey(sellerId);
+        seller.setStatus(status);
+        sellerMapper.updateByPrimaryKey(seller);
+    }
 }

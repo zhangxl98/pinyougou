@@ -56,4 +56,14 @@ public interface SellerService {
      * @return
      */
     TbSeller findOne(String id);
+
+    /**
+     * 更改审核状态
+     * <pre>createTime:
+     * 5/10/19 3:47 PM</pre>
+     *
+     * @param sellerId 商家 id
+     * @param status   审核状态
+     */
+    void updateStatus(String sellerId, String status);
 }

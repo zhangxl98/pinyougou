@@ -6,7 +6,6 @@ import com.pinyougou.pojo.TbSeller;
 import com.pinyougou.sellergoods.service.SellerService;
 import entity.PageResult;
 import entity.Result;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -67,5 +66,25 @@ public class SellerController {
     @RequestMapping("/findOne")
     public TbSeller findOne(String id) {
         return sellerService.findOne(id);
+    }
+
+    /**
+     * 更改审核状态
+     * <pre>createTime:
+     * 5/10/19 3:54 PM</pre>
+     *
+     * @param sellerId
+     * @param status
+     * @return
+     */
+    @RequestMapping("/updateStatus")
+    public Result updateStatus(String sellerId, String status) {
+        try {
+            sellerService.updateStatus(sellerId, status);
+            return new Result(true, "审核成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(false, "审核失败");
+        }
     }
 }
