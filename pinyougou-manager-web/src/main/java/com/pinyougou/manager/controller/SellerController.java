@@ -1,4 +1,4 @@
-package com.pinyougou.shop.controller;
+package com.pinyougou.manager.controller;
 
 
 import com.alibaba.dubbo.config.annotation.Reference;
@@ -31,23 +31,28 @@ public class SellerController {
     private SellerService sellerService;
 
     /**
-     * 增加
+     * 返回全部列表
      * <pre>createTime:
-     * 5/10/19 2:01 PM</pre>
+     * 5/10/19 2:46 PM</pre>
      *
-     * @param seller
      * @return
      */
-    @RequestMapping("/add")
-    public Result add(@RequestBody TbSeller seller) {
-        try {
-            sellerService.add(seller);
-            // 增加成功
-            return new Result(true, "增加成功");
-        } catch (Exception e) {
-            e.printStackTrace();
-            // 增加失败
-            return new Result(false, "增加失败");
-        }
+    @RequestMapping("/findAll")
+    public List<TbSeller> findAll() {
+        return sellerService.findAll();
+    }
+
+    /**
+     * 返回分页列表
+     * <pre>createTime:
+     * 5/10/19 2:54 PM</pre>
+     *
+     * @param page
+     * @param rows
+     * @return
+     */
+    @RequestMapping("/findPage")
+    public PageResult findPage(int page, int rows) {
+        return sellerService.findPage(page, rows);
     }
 }
