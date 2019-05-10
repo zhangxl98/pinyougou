@@ -1,5 +1,7 @@
 package com.pinyougou.service;
 
+import com.pinyougou.pojo.TbSeller;
+import com.pinyougou.sellergoods.service.SellerService;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -22,12 +24,30 @@ import java.util.List;
  * @Description 商家登录认证类
  */
 public class UserDetailsServiceImpl implements UserDetailsService {
+
+    private SellerService sellerService;
+
+    public void setSellerService(SellerService sellerService) {
+        this.sellerService = sellerService;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        System.out.println("UserDetailsServiceImpl 的 loadUserByUsername() 被调用......");
+
+        // 构建角色列表
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_SELLER"));
 
-        // 用户在输入密码 123456 时就会通过（用户名随意）
-        return new User(username, "123456", grantedAuthorities);
+        // 得到商家对象
+        TbSeller seller = sellerService.findOne(username);
+
+        if (null != seller && seller.getStatus().equals("1")) {
+            // 商家已审核
+            return new User(seller.getName(), seller.getPassword(), grantedAuthorities);
+        } else {
+            return null;
+        }
     }
 }

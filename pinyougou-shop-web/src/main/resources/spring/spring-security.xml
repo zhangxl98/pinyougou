@@ -53,6 +53,15 @@
         <authentication-provider user-service-ref="userDetailService">
         </authentication-provider>
     </authentication-manager>
-    <beans:bean id="userDetailService" class="com.pinyougou.service.UserDetailsServiceImpl"/>
+
+    <!-- 认证类 -->
+    <beans:bean id="userDetailService" class="com.pinyougou.service.UserDetailsServiceImpl">
+        <beans:property name="sellerService" ref="sellerService"></beans:property>
+    </beans:bean>
+
+    <!-- 引用dubbo 服务 -->
+    <dubbo:application name="pinyougou-shop-web"/>
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:reference id="sellerService" interface="com.pinyougou.sellergoods.service.SellerService"></dubbo:reference>
 
 </beans:beans>
