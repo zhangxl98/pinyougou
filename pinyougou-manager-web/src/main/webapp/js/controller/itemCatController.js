@@ -24,8 +24,46 @@ app.controller('itemCatController', function($scope, $controller, itemCatService
     )
   }
 
+
+  // 保存
+  $scope.save = () => {
+
+    // 判断是增加还是修改
+    let object = null
+    if ($scope.entity.id == null) {
+      // 增加品牌
+
+      // 给上级 id 赋值
+      $scope.entity.parentId = $scope.parentId
+
+      object = itemCatService.add($scope.entity)
+    } else {
+      // 修改品牌
+      object = itemCatService.update($scope.entity)
+    }
+
+    object.success(
+      (response) => {
+        if (response.success) {
+          // 成功，显示分页列表
+          $scope.findByParentId($scope.parentId)
+        } else {
+          // 失败，弹出提示信息
+          alert(response.message)
+        }
+      }
+    )
+  }
+
+
+  // 定义上级 id，默认为 0
+  $scope.parentId = 0
+
   // 根据上级 id 显示下级列表
   $scope.findByParentId = (parentId) => {
+    // 记录上级 id
+    $scope.parentId = parentId
+
     itemCatService.findByParentId(parentId).success(
       (response) => {
         $scope.list = response

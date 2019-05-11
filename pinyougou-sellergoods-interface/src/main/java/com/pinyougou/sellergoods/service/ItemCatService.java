@@ -49,6 +49,24 @@ public interface ItemCatService {
     TbItemCat findOne(Long id);
 
     /**
+     * 增加
+     * <pre>createTime:
+     * 5/11/19 9:56 AM</pre>
+     *
+     * @param itemCat
+     */
+    void add(TbItemCat itemCat);
+
+    /**
+     * 修改
+     * <pre>createTime:
+     * 5/11/19 9:57 AM</pre>
+     *
+     * @param itemCat
+     */
+    void update(TbItemCat itemCat);
+
+    /**
      * 根据上级 id 返回列表
      * <pre>createTime:
      * 5/10/19 9:43 PM</pre>

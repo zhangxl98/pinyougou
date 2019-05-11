@@ -47,6 +47,16 @@ public class ItemCatServiceImpl implements ItemCatService {
     }
 
     @Override
+    public void add(TbItemCat itemCat) {
+        itemCatMapper.insert(itemCat);
+    }
+
+    @Override
+    public void update(TbItemCat itemCat) {
+        itemCatMapper.updateByPrimaryKey(itemCat);
+    }
+
+    @Override
     public List<TbItemCat> findByParentId(Long parentId) {
         TbItemCatExample example = new TbItemCatExample();
         TbItemCatExample.Criteria criteria = example.createCriteria();

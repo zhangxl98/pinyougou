@@ -41,10 +41,10 @@
       <li>
         <a href="#" ng-click="grade = 1; selectList({ id : 0 })">顶级分类列表</a>
       </li>
-      <li>
+      <li ng-if="grade > 1">
         <a href="#" ng-click="grade = 2; selectList(entity_1)">{{ entity_1.name }}</a>
       </li>
-      <li>
+      <li ng-if="grade > 2">
         <a href="#" ng-click="grade = 3; selectList(entity_2)">{{ entity_2.name }}</a>
       </li>
     </ol>
@@ -56,7 +56,7 @@
       <div class="pull-left">
         <div class="form-group form-inline">
           <div class="btn-group">
-            <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal"><i class="fa fa-file-o"></i> 新建</button>
+            <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ng-click="entity = { name:'', typeId:''}"><i class="fa fa-file-o"></i> 新建</button>
             <button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button>
             <button type="button" class="btn btn-default" title="刷新"><i class="fa fa-check"></i> 刷新</button>
 
@@ -121,24 +121,30 @@
             <tr>
               <td>上级商品分类</td>
               <td>
-                珠宝 >> 银饰
+                <span ng-if="grade > 1">
+                  {{ entity_1.name }}
+                  <span ng-if="grade > 2">
+                    &nbsp;&nbsp;>>&nbsp;&nbsp;{{ entity_2.name }}
+                  </span>
+                </span>
+
               </td>
             </tr>
             <tr>
               <td>商品分类名称</td>
-              <td><input class="form-control" placeholder="商品分类名称"> </td>
+              <td><input class="form-control" placeholder="商品分类名称" ng-model="entity.name"> </td>
             </tr>
             <tr>
               <td>类型模板</td>
               <td>
-                <input select2 config="options['type_template']" placeholder="商品类型模板" class="form-control" type="text" />
+                <input select2 config="options['type_template']" placeholder="商品类型模板" class="form-control" type="text" ng-model="entity.typeId" />
               </td>
             </tr>
           </table>
 
         </div>
         <div class="modal-footer">
-          <button class="btn btn-success" data-dismiss="modal" aria-hidden="true">保存</button>
+          <button class="btn btn-success" data-dismiss="modal" aria-hidden="true" ng-click="save()">保存</button>
           <button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
         </div>
       </div>

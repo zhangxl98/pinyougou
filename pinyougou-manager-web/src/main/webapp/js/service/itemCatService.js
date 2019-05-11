@@ -11,6 +11,16 @@ app.service('itemCatService', function($http) {
     return $http.get('../itemCat/findOne.do?id=' + id)
   }
 
+  //增加
+  this.add = (entity) => {
+    return $http.post('../itemCat/add.do', entity)
+  }
+
+  //修改
+  this.update = (entity) => {
+    return $http.post('../itemCat/update.do', entity)
+  }
+
   // 根据上级 id 显示下级列表
   this.findByParentId = (parentId) => {
     return $http.get('../itemCat/findByParentId.do?parentId=' + parentId)
