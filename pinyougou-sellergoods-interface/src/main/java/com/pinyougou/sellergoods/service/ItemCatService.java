@@ -47,4 +47,14 @@ public interface ItemCatService {
      * @return
      */
     TbItemCat findOne(Long id);
+
+    /**
+     * 根据上级 id 返回列表
+     * <pre>createTime:
+     * 5/10/19 9:43 PM</pre>
+     *
+     * @param parentId
+     * @return
+     */
+    List<TbItemCat> findByParentId(Long parentId);
 }

@@ -65,4 +65,17 @@ public class ItemCatController {
     public TbItemCat fendOne(Long id) {
         return itemCatService.findOne(id);
     }
+
+    /**
+     * 根据上级 id 查询下级列表
+     * <pre>createTime:
+     * 5/10/19 9:51 PM</pre>
+     *
+     * @param parentId
+     * @return
+     */
+    @RequestMapping("/findByParentId")
+    public List<TbItemCat> findByParentId(Long parentId) {
+        return itemCatService.findByParentId(parentId);
+    }
 }

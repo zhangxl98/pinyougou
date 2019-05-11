@@ -5,6 +5,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.pinyougou.mapper.TbItemCatMapper;
 import com.pinyougou.pojo.TbItemCat;
+import com.pinyougou.pojo.TbItemCatExample;
 import com.pinyougou.sellergoods.service.ItemCatService;
 import entity.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,13 @@ public class ItemCatServiceImpl implements ItemCatService {
     @Override
     public TbItemCat findOne(Long id) {
         return itemCatMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<TbItemCat> findByParentId(Long parentId) {
+        TbItemCatExample example = new TbItemCatExample();
+        TbItemCatExample.Criteria criteria = example.createCriteria();
+        criteria.andParentIdEqualTo(parentId);
+        return itemCatMapper.selectByExample(example);
     }
 }

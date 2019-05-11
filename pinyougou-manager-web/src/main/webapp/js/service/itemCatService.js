@@ -5,14 +5,14 @@ app.service('itemCatService', function($http) {
   this.findAll = () => {
     return $http.get('../itemCat/findAll.do')
   }
-
-  //分页
-  this.findPage = (page, rows) => {
-    return $http.get('../itemCat/findPage.do?page=' + page + '&rows=' + rows)
-  }
-
+  
   // 根据 id 获取实体
 	this.findOne = (id) => {
   	return $http.get('../itemCat/findOne.do?id=' + id)
+	}
+
+	// 根据上级 id 显示下级列表
+	this.findByParentId = (parentId) => {
+  	return $http.get('../itemCat/findByParentId.do?parentId=' + parentId)
 	}
 })
