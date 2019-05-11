@@ -41,10 +41,10 @@
       <li>
         <a href="#" ng-click="grade = 1; selectList({ id : 0 })">顶级分类列表</a>
       </li>
-      <li ng-if="grade > 1">
+      <li>
         <a href="#" ng-click="grade = 2; selectList(entity_1)">{{ entity_1.name }}</a>
       </li>
-      <li ng-if="grade > 2">
+      <li>
         <a href="#" ng-click="grade = 3; selectList(entity_2)">{{ entity_2.name }}</a>
       </li>
     </ol>
@@ -57,7 +57,7 @@
         <div class="form-group form-inline">
           <div class="btn-group">
             <button type="button" class="btn btn-default" title="新建" data-toggle="modal" data-target="#editModal" ng-click="entity = { name:'', typeId:''}"><i class="fa fa-file-o"></i> 新建</button>
-            <button type="button" class="btn btn-default" title="删除"><i class="fa fa-trash-o"></i> 删除</button>
+            <button type="button" class="btn btn-default" title="删除" ng-click="delete()"><i class="fa fa-trash-o"></i> 删除</button>
             <button type="button" class="btn btn-default" title="刷新"><i class="fa fa-check"></i> 刷新</button>
 
           </div>
@@ -81,7 +81,7 @@
         </thead>
         <tbody>
           <tr ng-repeat="entity in list">
-            <td><input type="checkbox"></td>
+            <td><input type="checkbox" ng-click="updateSelection($event, entity.id)"></td>
             <td>{{ entity.id }}</td>
             <td>{{ entity.name }}</td>
             <td>{{ entity.typeId }}</td>

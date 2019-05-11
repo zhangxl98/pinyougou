@@ -56,6 +56,26 @@ app.controller('itemCatController', function($scope, $controller, itemCatService
   }
 
 
+  // 批量删除
+  $scope.delete = () => {
+
+    // 给上级 id 赋值
+    // $scope.entity.parentId = $scope.parentId
+
+    itemCatService.delete($scope.selectIds).success(
+      (response) => {
+        if (response.success) {
+          //重新查询
+          $scope.findByParentId($scope.parentId)
+        } else {
+          alert(response.message)
+        }
+        $scope.selectIds = []
+      }
+    )
+  }
+
+
   // 定义上级 id，默认为 0
   $scope.parentId = 0
 

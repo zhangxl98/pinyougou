@@ -57,6 +57,14 @@ public class ItemCatServiceImpl implements ItemCatService {
     }
 
     @Override
+    public void delete(Long[] ids) {
+        for (Long id : ids) {
+            // 删除当前分类
+            itemCatMapper.deleteByPrimaryKey(id);
+        }
+    }
+
+    @Override
     public List<TbItemCat> findByParentId(Long parentId) {
         TbItemCatExample example = new TbItemCatExample();
         TbItemCatExample.Criteria criteria = example.createCriteria();

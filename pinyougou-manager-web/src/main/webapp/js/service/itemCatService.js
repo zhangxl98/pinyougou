@@ -21,6 +21,11 @@ app.service('itemCatService', function($http) {
     return $http.post('../itemCat/update.do', entity)
   }
 
+  //删除
+  this.delete = (ids) => {
+    return $http.get('../itemCat/delete.do?ids=' + ids)
+  }
+
   // 根据上级 id 显示下级列表
   this.findByParentId = (parentId) => {
     return $http.get('../itemCat/findByParentId.do?parentId=' + parentId)

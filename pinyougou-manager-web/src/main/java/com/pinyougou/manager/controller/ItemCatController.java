@@ -122,4 +122,25 @@ public class ItemCatController {
             return new Result(false, "修改失败");
         }
     }
+
+    /**
+     * 批量删除
+     * <pre>createTime:
+     * 5/11/19 10:44 AM</pre>
+     *
+     * @param ids
+     * @return
+     */
+    @RequestMapping("/delete")
+    public Result delete(Long[] ids) {
+        try {
+            itemCatService.delete(ids);
+            // 删除成功
+            return new Result(true, "删除成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 删除失败
+            return new Result(false, "删除失败");
+        }
+    }
 }

@@ -67,6 +67,15 @@ public interface ItemCatService {
     void update(TbItemCat itemCat);
 
     /**
+     * 批量删除
+     * <pre>createTime:
+     * 5/11/19 10:42 AM</pre>
+     *
+     * @param ids
+     */
+    void delete(Long[] ids);
+
+    /**
      * 根据上级 id 返回列表
      * <pre>createTime:
      * 5/10/19 9:43 PM</pre>
