@@ -97,9 +97,9 @@
                 <select class="form-control"></select>
               </div>
 
-              <div class="col-md-2 title" ng-model="entity.goods.caption">副标题</div>
+              <div class="col-md-2 title">副标题</div>
               <div class="col-md-10 data">
-                <input type="text" class="form-control" placeholder="副标题" value="">
+                <input type="text" class="form-control" placeholder="副标题" value="" ng-model="entity.goods.caption">
               </div>
 
               <div class="col-md-2 title">价格</div>
@@ -398,13 +398,15 @@
 
 
   <!-- 正文区域 /-->
+  <!-- 初始化 kindeditor -->
   <script type="text/javascript">
-    var editor;
-    KindEditor.ready(function(K) {
+    let editor
+    KindEditor.ready((K) => {
       editor = K.create('textarea[name="content"]', {
+        // allowFileManager 【是否允许浏览服务器已上传文件】 默认值是：false
         allowFileManager: true
-      });
-    });
+      })
+    })
   </script>
 
 </body>
