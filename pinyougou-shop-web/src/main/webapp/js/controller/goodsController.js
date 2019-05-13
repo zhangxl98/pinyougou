@@ -48,4 +48,8 @@ app.controller('goodsController', function($scope, goodsService, uploadService) 
     $scope.entity.goodsDesc.itemImages.push($scope.image_entity)
   }
 
+  // 移除图片
+  $scope.remove_image_entity = (index) => {
+    $scope.entity.goodsDesc.itemImages.splice(index, 1)
+  }
 })
