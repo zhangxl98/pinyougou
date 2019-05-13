@@ -1,5 +1,5 @@
 // 控制层
-app.controller('goodsController', function($scope, goodsService, uploadService) {
+app.controller('goodsController', function($scope, goodsService, uploadService, itemCatService) {
 
   // 增加
   $scope.add = () => {
@@ -52,4 +52,34 @@ app.controller('goodsController', function($scope, goodsService, uploadService) 
   $scope.remove_image_entity = (index) => {
     $scope.entity.goodsDesc.itemImages.splice(index, 1)
   }
+
+  // 读取一级分类
+  $scope.selectItemCat1List = () => {
+    itemCatService.findByParentId(0).success(
+      (response) => {
+        $scope.itemCat1List = response
+      }
+    )
+  }
+
+  // 读取二级分类
+  // $watch方法用于监控某个变量的值，当被监控的值发生变化，就自动执行相应的函数
+  $scope.$watch('entity.goods.category1Id', (newValue, oldValue) => {
+    // 根据选择的值，查询二级分类
+    itemCatService.findByParentId(newValue).success(
+      (response) => {
+        $scope.itemCat2List = response
+      }
+    )
+  })
+
+  // 读取三级分类
+  $scope.$watch('entity.goods.category2Id', (newValue, oldValue) => {
+    // 根据选择的值，查询二级分类
+    itemCatService.findByParentId(newValue).success(
+      (response) => {
+        $scope.itemCat3List = response
+      }
+    )
+  })
 })
