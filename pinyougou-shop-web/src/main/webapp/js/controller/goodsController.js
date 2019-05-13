@@ -82,4 +82,14 @@ app.controller('goodsController', function($scope, goodsService, uploadService, 
       }
     )
   })
+
+  // 三级分类选择后，读取模板 id
+  $scope.$watch('entity.goods.category3Id', function(newValue, oldValue) {
+    itemCatService.findOne(newValue).success(
+      function(response) {
+        // 更新模板 id
+        $scope.entity.goods.typeTemplateId = response.typeId
+      }
+    )
+  })
 })

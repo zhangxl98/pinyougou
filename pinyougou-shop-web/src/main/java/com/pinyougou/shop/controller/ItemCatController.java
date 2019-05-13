@@ -27,6 +27,19 @@ public class ItemCatController {
     private ItemCatService itemCatService;
 
     /**
+     * 根据 id 获取实体
+     * <pre>createTime:
+     * 5/13/19 9:32 PM</pre>
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/findOne")
+    public TbItemCat fendOne(Long id) {
+        return itemCatService.findOne(id);
+    }
+
+    /**
      * 根据上级 id 查询下级列表
      * <pre>createTime:
      * 5/13/19 8:48 PM</pre>
