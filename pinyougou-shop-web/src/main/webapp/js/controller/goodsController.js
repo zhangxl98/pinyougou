@@ -20,7 +20,7 @@ app.controller('goodsController', function($scope, goodsService, uploadService) 
     )
   }
 
-
+  // 图片上传
   $scope.uploadFile = () => {
     uploadService.uploadFile().success(
       (response) => {
@@ -35,4 +35,17 @@ app.controller('goodsController', function($scope, goodsService, uploadService) 
       alert("上传发生错误")
     })
   }
+
+  //定义页面实体结构
+  $scope.entity = {
+    goodsDesc: {
+      itemImages: []
+    }
+  }
+
+  // 添加图片列表，将当前上传的图片实体存入图片列表
+  $scope.add_image_entity = () => {
+    $scope.entity.goodsDesc.itemImages.push($scope.image_entity)
+  }
+
 })
