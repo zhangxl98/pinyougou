@@ -58,10 +58,29 @@ public class FastDFSClient {
         return result;
     }
 
+    /**
+     * 上传文件方法
+     * <pre>createTime:
+     * 5/13/19 10:39 AM</pre>
+     *
+     * @param fileName 文件全路径
+     * @return
+     * @throws Exception
+     */
     public String uploadFile(String fileName) throws Exception {
         return uploadFile(fileName, null, null);
     }
 
+    /**
+     * 上传文件方法
+     * <pre>createTime:
+     * 5/13/19 10:39 AM</pre>
+     *
+     * @param fileName 文件全路径
+     * @param extName  文件扩展名 （不包含 “.”）
+     * @return
+     * @throws Exception
+     */
     public String uploadFile(String fileName, String extName) throws Exception {
         return uploadFile(fileName, extName, null);
     }
@@ -72,7 +91,7 @@ public class FastDFSClient {
      * 5/13/19 9:15 AM</pre>
      *
      * @param fileContent 文件的内容，字节数组
-     * @param extName     文件扩展名
+     * @param extName     文件扩展名 （不包含 “.”）
      * @param metas       文件扩展信息
      * @return
      * @throws Exception
@@ -83,10 +102,29 @@ public class FastDFSClient {
         return result;
     }
 
+    /**
+     * 上传文件方法
+     * <pre>createTime:
+     * 5/13/19 10:40 AM</pre>
+     *
+     * @param fileContent 文件的内容，字节数组
+     * @return
+     * @throws Exception
+     */
     public String uploadFile(byte[] fileContent) throws Exception {
         return uploadFile(fileContent, null, null);
     }
 
+    /**
+     * 上传文件方法
+     * <pre>createTime:
+     * 5/13/19 10:40 AM</pre>
+     *
+     * @param fileContent 文件的内容，字节数组
+     * @param extName     文件扩展名 （不包含 “.”）
+     * @return
+     * @throws Exception
+     */
     public String uploadFile(byte[] fileContent, String extName) throws Exception {
         return uploadFile(fileContent, extName, null);
     }
