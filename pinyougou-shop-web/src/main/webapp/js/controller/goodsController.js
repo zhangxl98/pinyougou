@@ -121,7 +121,7 @@ app.controller('goodsController', function($scope, $controller, goodsService, up
     )
   })
 
-  $scope.updateSpecAttribute = (name, value) => {
+  $scope.updateSpecAttribute = ($event, name, value) => {
 
     /**
      * 数据格式
@@ -133,7 +133,20 @@ app.controller('goodsController', function($scope, $controller, goodsService, up
     if (object !== null) {
       // 存在 attributeName ==> 追加 attributeValue
 
-      object.attributeValue.push(value)
+      if ($event.target.checked) {
+        // 选中
+        object.attributeValue.push(value)
+      } else {
+        // 取消勾选 ==> 移除 attributeValue
+        object.attributeValue.splice(object.attributeValue.indexOf(value), 1)
+
+        if (object.attributeValue.length === 0) {
+          // attributeValue 没有值了，需要移除整个 oboject
+          $scope.entity.goodsDesc.specificationItems.splice($scope.entity.goodsDesc.specificationItems.indexOf(object), 1)
+        }
+
+      }
+
     } else {
       // 不存在 attributeName ==> 添加 {"attributeName":"网络制式","attributeValue":["移动3G","移动4G"]}
       $scope.entity.goodsDesc.specificationItems.push({
