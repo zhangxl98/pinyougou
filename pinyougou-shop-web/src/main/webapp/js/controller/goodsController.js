@@ -101,6 +101,9 @@ app.controller('goodsController', function($scope, goodsService, uploadService, 
         $scope.typeTemplate = response
         // 品牌列表
         $scope.typeTemplate.brandIds = JSON.parse($scope.typeTemplate.brandIds)
+        // 扩展属性
+        $scope.entity.goodsDesc.customAttributeItems = JSON.parse($scope.typeTemplate.customAttributeItems)
+        console.log($scope.entity.goodsDesc.customAttributeItems)
       }
     )
   })
