@@ -28,6 +28,7 @@
   <script type="text/javascript" src="../js/service/uploadService.js"> </script>
   <script type="text/javascript" src="../js/service/itemCatService.js"> </script>
   <script type="text/javascript" src="../js/service/typeTemplateService.js"> </script>
+  <script type="text/javascript" src="../js/controller/baseController.js"> </script>
   <script type="text/javascript" src="../js/controller/goodsController.js"> </script>
 
 
@@ -198,28 +199,13 @@
                     <div class="col-md-10 data">
 
                       <span ng-repeat="option in pojo.options">
-                        <input type="checkbox">{{ option.optionName }}
+                        <input type="checkbox" ng-click="updateSpecAttribute(pojo.text, option.optionName)">{{ option.optionName }}
                       </span>
 
                     </div>
                   </div>
-                  <!--                  <div>-->
-                  <!--                    <div class="col-md-2 title">网络制式</div>-->
-                  <!--                    <div class="col-md-10 data">-->
-
-                  <!--                      <span>-->
-                  <!--                        <input type="checkbox">2G-->
-                  <!--                      </span>-->
-                  <!--                      <span>-->
-                  <!--                        <input type="checkbox">3G-->
-                  <!--                      </span>-->
-                  <!--                      <span>-->
-                  <!--                        <input type="checkbox">4G-->
-                  <!--                      </span>-->
-
-                  <!--                    </div>-->
                 </div>
-
+            {{entity.goodsDesc.specificationItems}}
               </div>
 
 

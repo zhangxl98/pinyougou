@@ -1,5 +1,10 @@
 // 控制层
-app.controller('goodsController', function($scope, goodsService, uploadService, itemCatService, typeTemplateService) {
+app.controller('goodsController', function($scope, $controller, goodsService, uploadService, itemCatService, typeTemplateService) {
+
+  // 继承
+  $controller('baseController', {
+    $scope: $scope
+  })
 
   // 增加
   $scope.add = () => {
@@ -39,7 +44,8 @@ app.controller('goodsController', function($scope, goodsService, uploadService, 
   //定义页面实体结构
   $scope.entity = {
     goodsDesc: {
-      itemImages: []
+      itemImages: [],
+      specificationItems: []
     }
   }
 
@@ -114,4 +120,26 @@ app.controller('goodsController', function($scope, goodsService, uploadService, 
       }
     )
   })
+
+  $scope.updateSpecAttribute = (name, value) => {
+
+    /**
+     * 数据格式
+     * [{"attributeName":"网络制式","attributeValue":["移动3G","移动4G"]},{"attributeName":"屏幕尺寸","attributeValue":["6寸","5寸"]}]
+     */
+    // 查看集合中有没有 attributeName
+    let object = $scope.searchObjectByKey($scope.entity.goodsDesc.specificationItems, 'attributeName', name);
+
+    if (object !== null) {
+      // 存在 attributeName ==> 追加 attributeValue
+
+      object.attributeValue.push(value)
+    } else {
+      // 不存在 attributeName ==> 添加 {"attributeName":"网络制式","attributeValue":["移动3G","移动4G"]}
+      $scope.entity.goodsDesc.specificationItems.push({
+        "attributeName": name,
+        "attributeValue": [value]
+      })
+    }
+  }
 })

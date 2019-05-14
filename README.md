@@ -99,8 +99,8 @@
 
 - 排除目录和文件
 
-  ```shell
-  $ tree pinyougou -F -I 'test|target|.idea|*.iml|*.mvn|.DS_Store|images|img|*.png|*.gif|*jpg|*.css|plugins|select2|*Mapper.xml|*Mapper.java|Tb*.java'
+  ```
+  'test|target|.idea|*.iml|*.mvn|.DS_Store|images|img|*.png|*.gif|*.jpg|*.css|plugins|pages|select2|*Mapper.xml|*Mapper.java|Tb*.java'
   ```
 
   
@@ -186,23 +186,6 @@
   │               │   │   ├── sellerController.js
   │               │   │   ├── specificationController.js
   │               │   │   └── typeTemplateController.js
-  │               │   ├── pages/
-  │               │   │   ├── addressList.js
-  │               │   │   ├── city-picker.js
-  │               │   │   ├── getOrderInfo.js
-  │               │   │   ├── home.js
-  │               │   │   ├── index.js
-  │               │   │   ├── jquery.slideunlock.js
-  │               │   │   ├── login.js
-  │               │   │   ├── login-manage.js
-  │               │   │   ├── main.js
-  │               │   │   ├── person-collect.js
-  │               │   │   ├── person-footmark.js
-  │               │   │   ├── register.js
-  │               │   │   ├── seckill-index.js
-  │               │   │   ├── shop.js
-  │               │   │   ├── shoplogin.js
-  │               │   │   └── sm-city-picker.js
   │               │   └── service/
   │               │       ├── brandService.js
   │               │       ├── itemCatService.js
@@ -308,23 +291,6 @@
   │               │   │   ├── goodsController.js
   │               │   │   ├── indexController.js
   │               │   │   └── sellerController.js
-  │               │   ├── pages/
-  │               │   │   ├── addressList.js
-  │               │   │   ├── city-picker.js
-  │               │   │   ├── getOrderInfo.js
-  │               │   │   ├── home.js
-  │               │   │   ├── index.js
-  │               │   │   ├── jquery.slideunlock.js
-  │               │   │   ├── login.js
-  │               │   │   ├── login-manage.js
-  │               │   │   ├── main.js
-  │               │   │   ├── person-collect.js
-  │               │   │   ├── person-footmark.js
-  │               │   │   ├── register.js
-  │               │   │   ├── seckill-index.js
-  │               │   │   ├── shop.js
-  │               │   │   ├── shoplogin.js
-  │               │   │   └── sm-city-picker.js
   │               │   └── service/
   │               │       ├── goodsService.js
   │               │       ├── itemCatService.js
@@ -344,9 +310,9 @@
           ├── java/
           └── resources/
   
-  97 directories, 137 files
+  95 directories, 105 files
   ```
-
+  
   
 
 
