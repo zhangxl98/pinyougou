@@ -121,6 +121,7 @@ app.controller('goodsController', function($scope, $controller, goodsService, up
     )
   })
 
+  // 保存选中规格选项
   $scope.updateSpecAttribute = ($event, name, value) => {
 
     /**
@@ -155,4 +156,41 @@ app.controller('goodsController', function($scope, $controller, goodsService, up
       })
     }
   }
+
+  // 创建 SKU 列表
+  $scope.createItemList = () => {
+    // 初始化列表
+    $scope.entity.itemList = [{
+      spec: {},
+      price: 0,
+      num: 99999,
+      status: '0',
+      isDefault: '0'
+    }]
+
+    let items = $scope.entity.goodsDesc.specificationItems
+
+    for (let i = 0; i < items.length; i++) {
+
+      $scope.entity.itemList = addColumn($scope.entity.itemList, items[i].attributeName, items[i].attributeValue)
+    }
+  }
+
+  // 增加列
+  addColumn = (list, columnName, columnValues) => {
+    let newList = []
+
+    for (let i = 0; i < list.length; i++) {
+      let oldRow = list[i];
+
+      for (let j = 0; j < columnValues.length; j++) {
+        // 深克隆
+        let newRow = JSON.parse(JSON.stringify(oldRow))
+        newRow.spec[columnName] = columnValues[j]
+        newList.push(newRow)
+      }
+    }
+    return newList
+  }
+
 })

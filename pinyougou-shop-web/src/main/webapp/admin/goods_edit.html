@@ -199,13 +199,13 @@
                     <div class="col-md-10 data">
 
                       <span ng-repeat="option in pojo.options">
-                        <input type="checkbox" ng-click="updateSpecAttribute($event, pojo.text, option.optionName)">{{ option.optionName }}
+                        <input type="checkbox" ng-click="updateSpecAttribute($event, pojo.text, option.optionName);createItemList()">{{ option.optionName }}
                       </span>
 
                     </div>
                   </div>
                 </div>
-            
+                {{entity.itemList}}
               </div>
 
 
