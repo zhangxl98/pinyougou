@@ -1,5 +1,5 @@
 // 控制层
-app.controller('goodsController', function($scope, goodsService, uploadService, itemCatService) {
+app.controller('goodsController', function($scope, goodsService, uploadService, itemCatService, typeTemplateService) {
 
   // 增加
   $scope.add = () => {
@@ -84,11 +84,23 @@ app.controller('goodsController', function($scope, goodsService, uploadService, 
   })
 
   // 三级分类选择后，读取模板 id
-  $scope.$watch('entity.goods.category3Id', function(newValue, oldValue) {
+  $scope.$watch('entity.goods.category3Id', (newValue, oldValue) => {
     itemCatService.findOne(newValue).success(
-      function(response) {
+      (response) => {
         // 更新模板 id
         $scope.entity.goods.typeTemplateId = response.typeId
+      }
+    )
+  })
+
+  // 选择模板后，更新品牌列表
+  $scope.$watch('entity.goods.typeTemplateId', (newValue, oldValue) => {
+    typeTemplateService.findOne(newValue).success(
+      (response) => {
+        // 获取类型模板
+        $scope.typeTemplate = response
+        // 品牌列表
+        $scope.typeTemplate.brandIds = JSON.parse($scope.typeTemplate.brandIds)
       }
     )
   })

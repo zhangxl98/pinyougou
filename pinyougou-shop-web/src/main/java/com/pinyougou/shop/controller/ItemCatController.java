@@ -17,7 +17,7 @@ import java.util.List;
  * @Device DELL-Inspiron-15-7559
  * @Modified By
  * @Version V1.0.0
- * @Description
+ * @Description 商品分类控制层
  */
 @RestController
 @RequestMapping("/itemCat")
