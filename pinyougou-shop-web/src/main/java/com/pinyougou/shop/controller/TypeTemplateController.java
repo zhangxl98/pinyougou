@@ -6,6 +6,9 @@ import com.pinyougou.sellergoods.service.TypeTemplateService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by IntelliJ IDEA.
  *
@@ -35,6 +38,19 @@ public class TypeTemplateController {
     @RequestMapping("/findOne")
     public TbTypeTemplate findOne(Long id) {
         return typeTemplateService.findOne(id);
+    }
+
+    /**
+     * 返回规格列表
+     * <pre>createTime:
+     * 5/14/19 6:37 PM</pre>
+     *
+     * @param id 模板 id
+     * @return
+     */
+    @RequestMapping("/findSpecList")
+    public List<Map> findSpecList(Long id) {
+        return typeTemplateService.findSpecList(id);
     }
 
 }

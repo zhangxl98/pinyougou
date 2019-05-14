@@ -4,6 +4,7 @@ import com.pinyougou.pojo.TbTypeTemplate;
 import entity.PageResult;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by IntelliJ IDEA.
@@ -74,4 +75,14 @@ public interface TypeTemplateService {
      * @param ids
      */
     void delete(Long[] ids);
+
+    /**
+     * 返回规格列表
+     * <pre>createTime:
+     * 5/14/19 5:30 PM</pre>
+     *
+     * @param id 模板 id
+     * @return 规格列表
+     */
+    List<Map> findSpecList(Long id);
 }
