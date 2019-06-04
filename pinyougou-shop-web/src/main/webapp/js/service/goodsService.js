@@ -6,4 +6,8 @@ app.service('goodsService', function($http) {
     return $http.post('../goods/add.do', entity)
   }
 
+  //搜索
+  this.search = (page, rows, searchEntity) => {
+    return $http.post('../goods/search.do?page=' + page + "&rows=" + rows, searchEntity)
+  }
 })

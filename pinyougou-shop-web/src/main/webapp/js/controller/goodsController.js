@@ -6,6 +6,34 @@ app.controller('goodsController', function($scope, $controller, goodsService, up
     $scope: $scope
   })
 
+  // 商品状态数组
+  $scope.status = ['未审核', '已审核', '审核未通过', '关闭']
+
+  // 分页
+  // $scope.findPage = (page, rows) => {
+  //   goodsService.findPage(page, rows).success(
+  //     (response) => {
+  //       $scope.list = response.rows
+  //       // 更新总记录数
+  //       $scope.paginationConf.totalItems = response.total
+  //     }
+  //   )
+  // }
+
+  // 商品分类列表
+  $scope.itemCatList = []
+  // 查询商品分类
+  $scope.findItemCatList = () => {
+    itemCatService.findAll().success(
+      (response) => {
+        for (let i = 0; i < response.length; i++) {
+          $scope.itemCatList[response[i].id] = response[i].name
+        }
+      }
+    )
+  }
+
+
   // 增加
   $scope.add = () => {
 
@@ -21,6 +49,19 @@ app.controller('goodsController', function($scope, $controller, goodsService, up
         } else {
           alert(response.message)
         }
+      }
+    )
+  }
+
+  // 搜索
+  // 定义搜索对象
+  $scope.searchEntity = {}
+  $scope.search = () => {
+    goodsService.search($scope.paginationConf.currentPage, $scope.paginationConf.itemsPerPage, $scope.searchEntity).success(
+      (response) => {
+        $scope.list = response.rows
+        // 更新总记录条数
+        $scope.paginationConf.totalItems = response.total
       }
     )
   }

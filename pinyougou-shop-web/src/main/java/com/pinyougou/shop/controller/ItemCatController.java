@@ -27,6 +27,18 @@ public class ItemCatController {
     private ItemCatService itemCatService;
 
     /**
+     * 返回全部列表
+     * <pre>createTime:
+     * 6/4/19 9:32 AM</pre>
+     *
+     * @return
+     */
+    @RequestMapping("/findAll")
+    public List<TbItemCat> findAll() {
+        return itemCatService.findAll();
+    }
+
+    /**
      * 根据 id 获取实体
      * <pre>createTime:
      * 5/13/19 9:32 PM</pre>
